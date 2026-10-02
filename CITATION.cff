@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+title: "PaMIR: Public Arrival-ordered Measurement for Inference in Risk"
+message: >-
+  If you use PaMIR, please cite this software and the original source of each
+  dataset you use (see pamir.dataset_info(id)["citation"] and docs/licenses.md).
+type: software
+authors:
+  - family-names: "Liashkov"
+    given-names: "Mikhail"
+    orcid: "https://orcid.org/0009-0002-3734-8441"
+  - family-names: "Varshavskiy"
+    given-names: "Ilyas"
+    orcid: "https://orcid.org/0000-0003-4924-2097"
+  - family-names: "Boboeva"
+    given-names: "Bonu"
+  - family-names: "Khalilbekov"
+    given-names: "Shuhrat"
+  - family-names: "Azimi"
+    given-names: "Azizjon"
+repository-code: "https://github.com/zypl-ai/pamir-credit"
+license: Apache-2.0
+version: "0.4.0"
+keywords:
+  - credit-risk
+  - credit-scoring
+  - default-prediction
+  - benchmark
+  - streaming
+  - tabular

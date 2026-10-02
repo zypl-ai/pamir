@@ -1,0 +1,32 @@
+/* Mermaid diagrams re-theme with the page (light/dark) via sphinxcontrib.mermaid,
+   so keep the container transparent and only handle layout: center the diagram
+   and let a wide one scroll horizontally instead of overflowing the page. */
+.mermaid {
+    margin: 1.25rem 0;
+    overflow-x: auto;
+    text-align: center;
+}
+.mermaid svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Footer: drop the "Made with Sphinx and @pradyunsg's Furo" line (loose text
+   and links that sit beside the copyright in .left-details) while keeping the
+   copyright itself. */
+.bottom-of-page .left-details {
+    font-size: 0;
+}
+.bottom-of-page .left-details .copyright {
+    font-size: 0.8125rem;
+}
+
+/* On phones, wrap long code lines instead of forcing a horizontal scroll that
+   runs the block off the screen. Desktop keeps the normal scroll behaviour. */
+@media (max-width: 480px) {
+    div.highlight pre,
+    pre {
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+    }
+}

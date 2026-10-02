@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=68.0", "setuptools-scm>=8.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pamir-credit"
+version = "0.4.0"
+description = "PaMIR: Public Arrival-ordered Measurement for Inference in Risk — an open benchmark for credit-default prediction with scarce and delayed labels: 19 public datasets, label-delayed streaming and i.i.d. evaluation, leakage-controlled synthetic augmentation"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.9"
+authors = [{name = "zypl.ai"}]
+keywords = ["credit-risk", "credit-scoring", "default-prediction", "benchmark",
+            "tabular", "streaming", "scorecard", "label-delay"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "scikit-learn>=1.3",
+    # imported directly by pamir.synthetic.fidelity's dependency-free layer;
+    # scikit-learn pulls it in anyway, but the import is ours, so declare it.
+    "scipy>=1.10",
+    "pyarrow>=15.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+# Fetching datasets from their original sources (PaMIR ships no data itself).
+data = ["kagglehub>=0.3", "huggingface-hub>=0.20", "platformdirs>=3.0"]
+# pamir.synthetic: generator adapters and the full SDV fidelity battery.
+# Without these the mixer still runs on its dependency-free metrics.
+synthetic = ["sdv>=1.12", "sdmetrics>=0.14", "xgboost>=2.0"]
+
+[project.scripts]
+pamir = "pamir.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/zypl-ai/pamir-credit"
+Documentation = "https://github.com/zypl-ai/pamir-credit#readme"
+Repository = "https://github.com/zypl-ai/pamir-credit"
+Issues = "https://github.com/zypl-ai/pamir-credit/issues"
+
+[tool.setuptools]
+license-files = ["LICENSE"]
+
+[tool.setuptools.packages.find]
+include = ["pamir*"]
+
+# PaMIR ships only the catalog/spec and the validation schema — never the
+# datasets themselves.  Data is fetched from each source's origin by
+# `pamir.download` (see the `data` optional dependencies).
+[tool.setuptools.package-data]
+pamir = ["data/catalog.json", "data/expected.json"]

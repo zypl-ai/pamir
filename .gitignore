@@ -1,0 +1,17 @@
+__pycache__/
+.DS_Store
+*.pyc
+
+# PaMIR does not distribute data — never commit dataset files to the repo.
+pamir/data/*.parquet
+*.parquet
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+docs/_build/
+.venv/
+*.egg
+
+# Local working copy of the technical report (synced with Overleaf, not tracked).
+draft/

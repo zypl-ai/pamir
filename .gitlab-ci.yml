@@ -1,0 +1,49 @@
+stages: [test, build, deploy]
+
+default:
+  image: python:3.12
+  before_script:
+    - pip install -e ".[dev,data]"
+
+# Data-dependent tests skip cleanly (no Kaggle credentials in CI); catalog,
+# recipe, and protocol tests always run.  The suite runs once under `coverage`,
+# so this job is both the test gate and the coverage report (shown in the GitLab
+# UI via the regex).  Coverage is not gated with --fail-under: CI has only the
+# credential-free datasets and no `synthetic` extra, so many data/sdv paths do
+# not run — the number is a floor, not the true coverage.
+test:
+  stage: test
+  before_script:
+    - pip install -e ".[dev,data]" coverage
+  script:
+    - pamir download --open      # 7 credential-free datasets so the leakage guards actually run
+    - coverage run -m pytest tests/ -q
+    - coverage report --include="pamir/*" --show-missing
+  coverage: '/^TOTAL\s+\d+\s+\d+\s+(\d+%)/'
+
+# The package builds and the docs are warning-clean.
+build:
+  stage: build
+  script:
+    - pip install build sphinx furo myst-parser sphinx-llms-txt sphinx-autodoc-typehints sphinx-copybutton sphinxcontrib-mermaid
+    - python -m build
+    - python -m sphinx -b html -W docs docs/_build/html
+  artifacts:
+    paths:
+      - dist/
+      - docs/_build/html
+    expire_in: 1 week
+
+# Deploy the built docs to Cloudflare Pages (dev only).  Reuses the docs
+# artifact from the `build` job; needs CLOUDFLARE_API_TOKEN and
+# CLOUDFLARE_ACCOUNT_ID set as CI/CD variables and a `pamir-docs` Pages project.
+deploy_cloudflare:
+  stage: deploy
+  image: node:20-slim
+  before_script: []          # override the default pip install — no python here
+  dependencies:
+    - build
+  script:
+    - npx wrangler pages deploy docs/_build/html --project-name=pamir-docs
+  only:
+    - dev
