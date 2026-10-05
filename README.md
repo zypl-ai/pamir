@@ -100,8 +100,8 @@ reproduced row past them.  See the synthetic-augmentation guide in `docs/synthet
 PaMIR is not on PyPI yet, so install from a clone:
 
 ```bash
-git clone https://github.com/zypl-ai/pamir-credit
-cd pamir-credit
+git clone https://github.com/zypl-ai/pamir
+cd pamir
 pip install -e ".[data]"
 ```
 
@@ -547,7 +547,7 @@ dataset you use (`pamir.dataset_info(id)["citation"]`):
              Khalilbekov, Shuhrat and Azimi, Azizjon},
   year    = {2026},
   version = {0.4.0},
-  url     = {https://github.com/zypl-ai/pamir-credit},
+  url     = {https://github.com/zypl-ai/pamir},
 }
 ```
 

@@ -49,10 +49,10 @@ synthetic = ["sdv>=1.12", "sdmetrics>=0.14", "xgboost>=2.0"]
 pamir = "pamir.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/zypl-ai/pamir-credit"
-Documentation = "https://github.com/zypl-ai/pamir-credit#readme"
-Repository = "https://github.com/zypl-ai/pamir-credit"
-Issues = "https://github.com/zypl-ai/pamir-credit/issues"
+Homepage = "https://github.com/zypl-ai/pamir"
+Documentation = "https://github.com/zypl-ai/pamir#readme"
+Repository = "https://github.com/zypl-ai/pamir"
+Issues = "https://github.com/zypl-ai/pamir/issues"
 
 [tool.setuptools]
 license-files = ["LICENSE"]

@@ -17,7 +17,7 @@ authors:
     given-names: "Shuhrat"
   - family-names: "Azimi"
     given-names: "Azizjon"
-repository-code: "https://github.com/zypl-ai/pamir-credit"
+repository-code: "https://github.com/zypl-ai/pamir"
 license: Apache-2.0
 version: "0.4.0"
 keywords:

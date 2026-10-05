@@ -112,7 +112,7 @@ delayed labels, not robustness to temporal shift.
    the fleet mean is withheld unless every dataset is scored.
 
 Full protocol specification and evaluation code: `pip install pamir-credit`
-([documentation](https://pamir-docs.pages.dev), [code](https://github.com/zypl-ai/pamir-credit)).
+([documentation](https://pamir-docs.pages.dev), [code](https://github.com/zypl-ai/pamir)).
 
 A repeated i.i.d. split protocol (`evaluate_iid`) is also
 provided for comparison with other tabular benchmarks.
@@ -146,6 +146,6 @@ source's terms and citing its original authors.
              Khalilbekov, Shuhrat and Azimi, Azizjon},
   year    = {2026},
   version = {0.4.0},
-  url     = {https://github.com/zypl-ai/pamir-credit},
+  url     = {https://github.com/zypl-ai/pamir},
 }
 ```

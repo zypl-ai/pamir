@@ -5,8 +5,8 @@
 PaMIR is not on PyPI yet, so install from a clone:
 
 ```bash
-git clone https://github.com/zypl-ai/pamir-credit
-cd pamir-credit
+git clone https://github.com/zypl-ai/pamir
+cd pamir
 pip install -e ".[data]"    # add [dev] for pytest, [synthetic] for pamir.synthetic
 ```
 
