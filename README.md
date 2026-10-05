@@ -2,6 +2,13 @@
 
 **P**ublic **A**rrival-ordered **M**easurement for **I**nference in **R**isk
 
+[![PyPI](https://img.shields.io/pypi/v/pamir.svg)](https://pypi.org/project/pamir/)
+[![arXiv](https://img.shields.io/badge/arXiv-2610.03259-b31b1b.svg)](https://arxiv.org/abs/2610.03259)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/zypl-ai/pamir/blob/main/LICENSE)
+
+Paper: [*PaMIR: Open Benchmark of Public Credit-Default Datasets*](https://arxiv.org/abs/2610.03259)
+(arXiv:2610.03259) — describes release 0.4.0.
+
 *The name doubles as the Pamir mountains — the "Roof of the World"; the datasets
 themselves span Poland, Taiwan, Brazil, Estonia, the US and beyond.*
 
@@ -97,7 +104,11 @@ reproduced row past them.  See the synthetic-augmentation guide in `docs/synthet
 
 ## Installation
 
-PaMIR is not on PyPI yet, so install from a clone:
+```bash
+pip install "pamir[data]"
+```
+
+To work on PaMIR itself, install from a clone instead:
 
 ```bash
 git clone https://github.com/zypl-ai/pamir
@@ -119,11 +130,9 @@ Core dependencies: numpy, pandas, scikit-learn, scipy, pyarrow.  No GPU required
 Optional extras:
 
 ```bash
-pip install -e ".[dev]"        # pytest
-pip install -e ".[synthetic]"  # sdv, sdmetrics, xgboost — for pamir.synthetic
+pip install "pamir[synthetic]"  # sdv, sdmetrics, xgboost — for pamir.synthetic
+pip install "pamir[dev]"        # pytest
 ```
-
-Once published, `pip install pamir` will be the one-line path.
 
 ### A note on import order (macOS/arm64)
 
@@ -537,8 +546,23 @@ use the published protocol, ship with its code, and be marked as such.
 
 ## Citation
 
-If you use PaMIR, please cite the software and the original source of every
+If you use PaMIR, please cite the paper and the original source of every
 dataset you use (`pamir.dataset_info(id)["citation"]`):
+
+```bibtex
+@misc{liashkov2026pamir,
+  title         = {PaMIR: Open Benchmark of Public Credit-Default Datasets},
+  author        = {Liashkov, Mikhail and Varshavskiy, Ilyas and Khalilbekov, Shuhratjon and
+                   Azimi, Azizjon and Boboeva, Bonu},
+  year          = {2026},
+  eprint        = {2610.03259},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  url           = {https://arxiv.org/abs/2610.03259},
+}
+```
+
+To cite a specific release of the software:
 
 ```bibtex
 @software{pamir2026,
@@ -550,6 +574,3 @@ dataset you use (`pamir.dataset_info(id)["citation"]`):
   url     = {https://github.com/zypl-ai/pamir},
 }
 ```
-
-A technical report describing the benchmark is in preparation; this entry will
-point to it once it is public.

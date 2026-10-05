@@ -112,7 +112,7 @@ delayed labels, not robustness to temporal shift.
    the fleet mean is withheld unless every dataset is scored.
 
 Full protocol specification and evaluation code: `pip install pamir`
-([documentation](https://pamir-docs.pages.dev), [code](https://github.com/zypl-ai/pamir)).
+([paper](https://arxiv.org/abs/2610.03259), [documentation](https://pamir-docs.pages.dev), [code](https://github.com/zypl-ai/pamir)).
 
 A repeated i.i.d. split protocol (`evaluate_iid`) is also
 provided for comparison with other tabular benchmarks.
@@ -140,6 +140,17 @@ source's terms and citing its original authors.
 ## Citation
 
 ```bibtex
+@misc{liashkov2026pamir,
+  title         = {PaMIR: Open Benchmark of Public Credit-Default Datasets},
+  author        = {Liashkov, Mikhail and Varshavskiy, Ilyas and Khalilbekov, Shuhratjon and
+                   Azimi, Azizjon and Boboeva, Bonu},
+  year          = {2026},
+  eprint        = {2610.03259},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  url           = {https://arxiv.org/abs/2610.03259},
+}
+
 @software{pamir2026,
   title   = {PaMIR: Public Arrival-ordered Measurement for Inference in Risk},
   author  = {Liashkov, Mikhail and Varshavskiy, Ilyas and Boboeva, Bonu and

@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 title: "PaMIR: Public Arrival-ordered Measurement for Inference in Risk"
 message: >-
-  If you use PaMIR, please cite this software and the original source of each
+  If you use PaMIR, please cite the paper below and the original source of each
   dataset you use (see pamir.dataset_info(id)["citation"] and docs/licenses.md).
 type: software
 authors:
@@ -27,3 +27,26 @@ keywords:
   - benchmark
   - streaming
   - tabular
+preferred-citation:
+  type: article
+  title: "PaMIR: Open Benchmark of Public Credit-Default Datasets"
+  authors:
+    - family-names: "Liashkov"
+      given-names: "Mikhail"
+      orcid: "https://orcid.org/0009-0002-3734-8441"
+    - family-names: "Varshavskiy"
+      given-names: "Ilyas"
+      orcid: "https://orcid.org/0000-0003-4924-2097"
+    - family-names: "Khalilbekov"
+      given-names: "Shuhratjon"
+    - family-names: "Azimi"
+      given-names: "Azizjon"
+    - family-names: "Boboeva"
+      given-names: "Bonu"
+  year: 2026
+  journal: "arXiv preprint"
+  identifiers:
+    - type: other
+      value: "arXiv:2610.03259"
+  doi: "10.48550/arXiv.2610.03259"
+  url: "https://arxiv.org/abs/2610.03259"

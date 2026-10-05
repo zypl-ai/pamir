@@ -53,6 +53,7 @@ Homepage = "https://github.com/zypl-ai/pamir"
 Documentation = "https://github.com/zypl-ai/pamir#readme"
 Repository = "https://github.com/zypl-ai/pamir"
 Issues = "https://github.com/zypl-ai/pamir/issues"
+Paper = "https://arxiv.org/abs/2610.03259"
 
 [tool.setuptools]
 license-files = ["LICENSE"]
