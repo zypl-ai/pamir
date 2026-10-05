@@ -33,7 +33,7 @@ An open benchmark for **credit-default prediction when labels are scarce and
 arrive late**: **19 public credit-default datasets** (1.24M loans, firms and
 card accounts from nine countries, default rates 3%–41%), rebuilt from pinned
 source snapshots by one leakage-audited recipe and never redistributed; to our
-knowledge it is the **largest open collection** of its kind.  Every model is
+knowledge it is the one of its kind as of today.  Every model is
 scored under **two evaluation protocols**: a label-delayed stream, in which each
 application is scored on arrival by a model trained only on outcomes that have
 matured, with AUC by label budget, and a repeated i.i.d. split for comparison

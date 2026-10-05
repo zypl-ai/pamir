@@ -16,7 +16,7 @@ An open benchmark for **credit-default prediction when labels are scarce and
 arrive late**.  PaMIR rebuilds **19 public credit-default datasets** (1.2 million
 rows, 9 named countries, default rates 3%–41%) from pinned source snapshots by
 one leakage-audited recipe and never redistributes them; to our knowledge it is
-the largest open collection of its kind.  Every model is a single function,
+the one of its kind as of today.  Every model is a single function,
 scored under a **label-delayed stream**, in which each application is scored on
 arrival by a model trained only on outcomes that have matured, with AUC
 reported by label budget, and under a conventional **i.i.d. split** for
