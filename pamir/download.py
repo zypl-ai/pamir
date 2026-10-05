@@ -20,7 +20,7 @@ Sources and their requirements:
 - ``hf``         — needs ``huggingface_hub``; the catalog pins a revision where
   one is recorded.
 
-Install the optional fetch dependencies with ``pip install pamir-credit[data]``.
+Install the optional fetch dependencies with ``pip install pamir[data]``.
 """
 
 import io
@@ -55,7 +55,7 @@ def cache_dir() -> Path:
 
 
 def _http_get(url: str) -> bytes:
-    req = Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; pamir-credit)"})
+    req = Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; pamir)"})
     with urlopen(req, timeout=120) as r:  # noqa: S310 (trusted, https)
         return r.read()
 
@@ -99,7 +99,7 @@ def _fetch_raw(spec: Dict, raw_dir: Path) -> Path:
             import kagglehub
         except ImportError as e:
             raise ImportError(
-                "kaggle competition source needs `kagglehub` — pip install pamir-credit[data]"
+                "kaggle competition source needs `kagglehub` — pip install pamir[data]"
             ) from e
         # Single-file download (path=) — avoids pulling the whole ~700MB
         # competition, and kagglehub gives a clear message if the rules were not
@@ -122,7 +122,7 @@ def _fetch_raw(spec: Dict, raw_dir: Path) -> Path:
             import kagglehub
         except ImportError as e:
             raise ImportError(
-                "kaggle source needs `kagglehub` — pip install pamir-credit[data]"
+                "kaggle source needs `kagglehub` — pip install pamir[data]"
             ) from e
         handle = kaggle_handle(dl)
         path = Path(kagglehub.dataset_download(handle))
@@ -137,7 +137,7 @@ def _fetch_raw(spec: Dict, raw_dir: Path) -> Path:
             from huggingface_hub import hf_hub_download
         except ImportError as e:
             raise ImportError(
-                "hf source needs `huggingface_hub` — pip install pamir-credit[data]"
+                "hf source needs `huggingface_hub` — pip install pamir[data]"
             ) from e
         return Path(hf_hub_download(repo_id=loc, filename=fname, repo_type="dataset",
                                     revision=dl.get("revision")))

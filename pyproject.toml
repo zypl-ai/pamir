@@ -3,7 +3,7 @@ requires = ["setuptools>=68.0", "setuptools-scm>=8.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pamir-credit"
+name = "pamir"
 version = "0.4.0"
 description = "PaMIR: Public Arrival-ordered Measurement for Inference in Risk — an open benchmark for credit-default prediction with scarce and delayed labels: 19 public datasets, label-delayed streaming and i.i.d. evaluation, leakage-controlled synthetic augmentation"
 readme = "README.md"

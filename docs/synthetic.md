@@ -253,7 +253,7 @@ the prototype, so a second run never inherits the first one's state.
 ## Installing the optional parts
 
 ```bash
-pip install "pamir-credit[synthetic]"   # sdv, sdmetrics, xgboost
+pip install "pamir[synthetic]"   # sdv, sdmetrics, xgboost
 ```
 
 Without them the mixer still runs and the fidelity report falls back to its

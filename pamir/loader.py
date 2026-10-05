@@ -63,7 +63,7 @@ def load_dataset(
         if not auto_download:
             raise FileNotFoundError(
                 f"'{dataset_id}' is not cached at {pq}. "
-                f"Run `pamir.download('{dataset_id}')` (needs pamir-credit[data]; "
+                f"Run `pamir.download('{dataset_id}')` (needs pamir[data]; "
                 f"Kaggle sources also need Kaggle credentials)."
             )
         pq = download(dataset_id, strict=strict)

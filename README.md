@@ -123,7 +123,7 @@ pip install -e ".[dev]"        # pytest
 pip install -e ".[synthetic]"  # sdv, sdmetrics, xgboost — for pamir.synthetic
 ```
 
-Once published, `pip install pamir-credit` will be the one-line path.
+Once published, `pip install pamir` will be the one-line path.
 
 ### A note on import order (macOS/arm64)
 

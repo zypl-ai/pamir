@@ -106,7 +106,7 @@ baselines; 0.3.0 numbers are reproducible with the options noted below.
   reproduced hold-out row cannot slip through. Generator adapters cover the SDV
   engines plus the zGAN / zEDGE repositories; the mixer still runs on its
   dependency-free metrics when the optional `synthetic` extra is absent.
-  Install with `pip install "pamir-credit[synthetic]"`. See `docs/synthetic.md`
+  Install with `pip install "pamir[synthetic]"`. See `docs/synthetic.md`
   (guide) and `docs/synthetic_design.md` (design record).
 - Docs render the design-record diagrams via `sphinxcontrib.mermaid`.
 

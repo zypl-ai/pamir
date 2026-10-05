@@ -21,7 +21,7 @@ size_categories:
 ---
 
 > **This page hosts no data.** PaMIR does not redistribute the datasets. It is a
-> Python package (`pip install "pamir-credit[data]"`) that fetches each dataset
+> Python package (`pip install "pamir[data]"`) that fetches each dataset
 > from its original source and harmonizes it locally. The `apache-2.0` tag
 > covers the **package code only**; each dataset stays under its own license.
 
@@ -44,7 +44,7 @@ training rows.  This card hosts no data.
 ## Quick use
 
 ```python
-# pip install "pamir-credit[data]"
+# pip install "pamir[data]"
 # Fetches gmsc from its original source and harmonizes it locally on first use.
 from pamir import load_dataset, evaluate, evaluate_iid, gbdt_fit, gbdt_baseline
 X, y, meta = load_dataset("gmsc")
@@ -111,7 +111,7 @@ delayed labels, not robustness to temporal shift.
 5. Metric: ROC AUC over all scored applications, and AUC by label budget;
    the fleet mean is withheld unless every dataset is scored.
 
-Full protocol specification and evaluation code: `pip install pamir-credit`
+Full protocol specification and evaluation code: `pip install pamir`
 ([documentation](https://pamir-docs.pages.dev), [code](https://github.com/zypl-ai/pamir)).
 
 A repeated i.i.d. split protocol (`evaluate_iid`) is also
