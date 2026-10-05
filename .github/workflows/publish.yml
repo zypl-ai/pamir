@@ -1,0 +1,66 @@
+# Publish to PyPI when a GitHub Release is published.
+#
+# Uses PyPI Trusted Publishing (OIDC): no API token is stored anywhere.  PyPI
+# trusts this exact workflow file (publish.yml) running in the `pypi`
+# environment of zypl-ai/pamir.  The release tag must match the package
+# version: tag v0.4.0 <-> version = "0.4.0" in pyproject.toml.
+
+name: publish
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:   # manual dry run: tests + build, never uploads
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev,data]"
+      - run: pamir download --open      # 7 credential-free datasets so the leakage guards actually run
+      - run: pytest tests/ -q
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check the tag matches the package version
+        if: github.event_name == 'release'
+        run: |
+          version=$(python -c "import tomllib; print(tomllib.load(open('pyproject.toml','rb'))['project']['version'])")
+          tag="${GITHUB_REF_NAME#v}"
+          if [ "$tag" != "$version" ]; then
+            echo "::error::Release tag $GITHUB_REF_NAME does not match pyproject version $version"
+            exit 1
+          fi
+      - run: pip install build twine
+      - run: python -m build
+      - run: twine check dist/*
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  publish:
+    needs: build
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/pamir/
+    permissions:
+      id-token: write   # required for Trusted Publishing
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1
